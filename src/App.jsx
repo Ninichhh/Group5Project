@@ -1,16 +1,21 @@
-import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { LanguageProvider } from "./LanguageContext";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Booking from "./Booking";
 
-import Content from './Componant/Content';
-import Top from './Componant/Top';
-
-const App = () => {
+function App() {
   return (
-    <div>
-      <Top/>
-      <Content/>
-      
-    </div>
+    <LanguageProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/booking" element={<Booking />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   );
-};
+}
+
 export default App;
